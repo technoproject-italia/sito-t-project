@@ -28,7 +28,15 @@ jobs:
           tools: composer
 
       - name: Installa la libreria Anthropic per il chatbot
-        run: composer install --no-dev --optimize-autoloader --no-interaction -d dist/api
+        run: |
+          composer install --no-dev --optimize-autoloader --no-interaction -d dist/api
+          # un solo archivio al posto di migliaia di file: il server lo estrae alla prima richiesta.
+          # Date fisse e ordine stabile: l'archivio cambia (e viene ricaricato) solo se cambiano le librerie.
+          cd dist/api
+          find vendor -depth \( -name .git -o -name .github -o -name tests -o -name fixtures -o -name examples -o -name docs \) -type d -exec rm -rf {} +
+          find vendor -exec touch -h -d '2000-01-01 00:00:00' {} +
+          find vendor -print | LC_ALL=C sort | zip -qX -@ vendor.zip
+          rm -rf vendor
 
       - name: Crea la configurazione dai secrets
         env:
@@ -64,6 +72,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
           server-dir: ${{ secrets.FTP_DIR || 'public_html/' }}
+          timeout: 120000
           exclude: |
             **/.git*
             **/.git*/**

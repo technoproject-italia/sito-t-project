@@ -6,7 +6,6 @@
  */
 declare(strict_types=1);
 require __DIR__ . '/_comune.php';
-require __DIR__ . '/vendor/autoload.php';
 
 use Anthropic\Client;
 use Anthropic\Core\Exceptions\APIConnectionException;
@@ -59,6 +58,7 @@ foreach ($kb['argomenti'] as $a) {
 }
 
 try {
+    tp_vendor();
     $client = new Client(apiKey: $cfg['anthropic_api_key']);
     $risposta = $client->beta->messages->create(
         model: $cfg['modello'] ?? 'claude-opus-5-5',

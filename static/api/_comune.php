@@ -56,3 +56,52 @@ function tp_limite(string $chiave, int $max, int $secondi): bool
     }
     return true;
 }
+
+/**
+ * Carica le librerie PHP. Il deploy carica vendor.zip (un solo file invece di migliaia via FTP):
+ * alla prima richiesta dopo ogni aggiornamento l'archivio viene estratto in vendor/.
+ */
+function tp_vendor(): void
+{
+    $zip = __DIR__ . '/vendor.zip';
+    $dir = __DIR__ . '/vendor';
+    if (is_file($zip)) {
+        $versione = (string) hash_file('sha256', $zip);
+        if (@file_get_contents($dir . '/.versione') !== $versione) {
+            $lock = fopen(__DIR__ . '/vendor.lock', 'c');
+            flock($lock, LOCK_EX);
+            // un'altra richiesta può averlo estratto mentre aspettavamo il lock
+            if (@file_get_contents($dir . '/.versione') !== $versione) {
+                $tmp = $dir . '-nuovo';
+                tp_rimuovi_cartella($tmp);
+                $archivio = new ZipArchive();
+                if ($archivio->open($zip) !== true || !$archivio->extractTo($tmp)) {
+                    throw new RuntimeException('Estrazione di vendor.zip non riuscita');
+                }
+                $archivio->close();
+                file_put_contents($tmp . '/vendor/.versione', $versione);
+                tp_rimuovi_cartella($dir);
+                rename($tmp . '/vendor', $dir);
+                tp_rimuovi_cartella($tmp);
+            }
+            flock($lock, LOCK_UN);
+            fclose($lock);
+        }
+    }
+    require $dir . '/autoload.php';
+}
+
+function tp_rimuovi_cartella(string $dir): void
+{
+    if (!is_dir($dir)) {
+        return;
+    }
+    $voci = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS),
+        RecursiveIteratorIterator::CHILD_FIRST
+    );
+    foreach ($voci as $voce) {
+        $voce->isDir() && !$voce->isLink() ? rmdir($voce->getPathname()) : unlink($voce->getPathname());
+    }
+    rmdir($dir);
+}

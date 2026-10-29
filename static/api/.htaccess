@@ -2,5 +2,6 @@
 <FilesMatch "^(config|config\.example|_comune)\.php$">
   Require all denied
 </FilesMatch>
-RedirectMatch 404 ^/api/(vendor|dati-temp)(/|$)
+RedirectMatch 404 ^/api/(vendor|vendor-nuovo|dati-temp)(/|$)
+RedirectMatch 404 ^/api/vendor\.(zip|lock)$
 RedirectMatch 404 ^/api/composer\.(json|lock)$
