@@ -72,6 +72,9 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
           server-dir: ${{ secrets.FTP_DIR || 'public_html/' }}
+          # FTP con TLS: su Hostinger la connessione dati in chiaro viene chiusa
+          protocol: ftps
+          security: loose
           timeout: 120000
           exclude: |
             **/.git*
