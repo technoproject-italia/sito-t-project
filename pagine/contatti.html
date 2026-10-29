@@ -1,0 +1,50 @@
+<section class="page-hero grid-paper">
+  <div class="wrap">
+    <span class="tag">Contatti</span>
+    <h1>Raccontaci il tuo progetto.</h1>
+    <p class="lead">Compila il modulo: ti rispondiamo entro un giorno lavorativo. Se preferisci, puoi scriverci direttamente o venirci a trovare su appuntamento.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split" style="grid-template-columns:1.4fr .8fr">
+    <form class="form" id="modulo" action="api/contatto.php" method="post" novalidate>
+      <div class="row">
+        <div class="field"><label for="nome">Nome e cognome</label><input id="nome" name="nome" autocomplete="name" required maxlength="100"><span class="err" data-err="nome"></span></div>
+        <div class="field"><label for="azienda">Azienda <small>(facoltativo)</small></label><input id="azienda" name="azienda" autocomplete="organization" maxlength="120"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160"><span class="err" data-err="email"></span></div>
+        <div class="field"><label for="telefono">Telefono <small>(facoltativo)</small></label><input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="tipo">Di cosa hai bisogno?</label>
+          <select id="tipo" name="tipo">
+            <option>Software gestionale</option><option>Sito web</option><option>E-commerce</option>
+            <option>App iOS / Android</option><option>Integrazioni e automazioni</option>
+            <option>Intelligenza artificiale / chatbot</option><option>Assistenza su un'app esistente</option><option>Altro</option>
+          </select></div>
+        <div class="field"><label for="budget">Budget indicativo <small>(facoltativo)</small></label>
+          <select id="budget" name="budget">
+            <option value="">Preferisco non indicarlo</option><option>Fino a 5.000 €</option><option>5.000 – 15.000 €</option>
+            <option>15.000 – 40.000 €</option><option>Oltre 40.000 €</option>
+          </select></div>
+      </div>
+      <div class="field"><label for="messaggio">Messaggio</label><textarea id="messaggio" name="messaggio" required maxlength="5000" placeholder="Descrivi in breve l'idea, gli obiettivi e le eventuali scadenze."></textarea><span class="err" data-err="messaggio"></span></div>
+      <div class="hp" aria-hidden="true"><label for="sito_web">Lascia vuoto questo campo</label><input id="sito_web" name="sito_web" tabindex="-1" autocomplete="off"></div>
+      <label class="check" for="privacy"><input id="privacy" name="privacy" type="checkbox" value="1" required><span>Ho letto l'<a href="privacy.html" target="_blank">informativa sulla privacy</a> e acconsento al trattamento dei miei dati per ricevere una risposta alla mia richiesta.</span></label>
+      <span class="err" data-err="privacy" style="color:var(--err);font-size:var(--t-xs)"></span>
+      <div><button class="btn" type="submit">Invia la richiesta</button></div>
+      <div class="form-msg" role="status" aria-live="polite" hidden></div>
+    </form>
+
+    <aside class="info-list" style="align-content:start">
+      <div><dt>Sede</dt><dd>{{nome}}<br>{{indirizzo}}<br>{{cap_citta}}</dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:{{email}}">{{email}}</a></dd></div>
+      <div><dt>Partita IVA</dt><dd>{{piva}}</dd></div>
+      <div><dt>Orari</dt><dd>Lunedì – venerdì, 9:00 – 13:00 e 15:00 – 18:30</dd></div>
+      <div><dt>Come arrivare</dt><dd><a href="https://www.google.com/maps/search/?api=1&query=Viale+Umberto+108%2FB+Sassari" target="_blank" rel="noopener">Apri in Google Maps</a></dd></div>
+      <div class="card" style="margin-top:8px"><h3>Preferisci chiedere subito?</h3><p>Il nostro assistente virtuale ti spiega cosa possiamo realizzare e come lavoriamo.</p><button class="btn btn--ghost" type="button" data-open-chat>Apri l'assistente</button></div>
+    </aside>
+  </div>
+</section>

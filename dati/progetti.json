@@ -1,0 +1,85 @@
+[
+  {
+    "nome": "Gestionale.shop",
+    "sigla": "GS",
+    "colore": "#3fd0c9",
+    "stato": "online",
+    "sito_esterno": "https://www.gestionale.shop",
+    "accesso": "https://www.gestionale.shop/cloud/account",
+    "etichetta_url": "gestionale.shop",
+    "descrizione": "Il gestionale per negozi e catene: cassa touch, incassi multi negozio, magazzino e fatture lette con l'intelligenza artificiale.",
+    "piattaforme": ["Cassa touch", "Multi negozio", "Fatture con AI"]
+  },
+  {
+    "nome": "Interrogami",
+    "sigla": "IN",
+    "colore": "#6b8cff",
+    "stato": "sviluppo",
+    "sottodominio": "interrogami",
+    "descrizione": "L'app che aiuta gli studenti a studiare: riassunti, mappe concettuali e interrogazioni orali valutate in base al livello scolastico.",
+    "piattaforme": ["iPhone", "iPad"],
+    "pagina": {
+      "titolo": "Studia meglio, <mark>ripeti</mark> come in classe.",
+      "lead": "Fotografa il compito o carica un PDF: Interrogami prepara riassunti e mappe concettuali e poi ti interroga a voce, con una valutazione adatta al tuo livello scolastico.",
+      "scheda": [["Piattaforma", "iPhone e iPad"], ["Stato", "In sviluppo"], ["Livelli", "Dalla primaria alle superiori"], ["Pubblicità", "Nessuna"]],
+      "funzioni": [
+        ["Carica il compito", "Foto, PDF o testo incollato: il testo viene trascritto mantenendo il grassetto e i concetti chiave."],
+        ["Riassunti su misura", "Scegli la lunghezza, un terzo o due terzi del testo, con un linguaggio adatto alla tua età."],
+        ["Mappe concettuali", "Le mappe partono dalle parole in grassetto, così ritrovi subito i concetti che contano."],
+        ["Quiz a scelta multipla", "Domande generate sul materiale per verificare cosa hai capito."],
+        ["Interrogazione orale", "Ripeti a voce: ricevi un voto di allenamento in decimi, i punti forti, cosa ripassare e domande di approfondimento."],
+        ["Mi sono bloccato", "Un aiuto progressivo: prima una spinta, poi la parola chiave, senza darti subito la risposta."]
+      ],
+      "sezioni": [
+        ["Pensata per famiglie", "Report settimanale via email ai genitori. Per i ragazzi sotto i 14 anni serve il consenso del genitore, richiesto direttamente dall'app."],
+        ["Privacy della voce", "Il riconoscimento vocale avviene sul telefono: l'audio non lascia il dispositivo e non viene salvato. Al server arriva solo il testo."],
+        ["Piani previsti", "Gratuito con utilizzo settimanale limitato, Premium a 4,99 € al mese o 39,99 € all'anno con 7 giorni di prova, Famiglia a 6,99 € al mese."]
+      ],
+      "cta": "Vuoi provarla in anteprima? Scrivici e ti avvisiamo appena è disponibile su App Store."
+    }
+  },
+  {
+    "nome": "Fiera",
+    "sigla": "FI",
+    "colore": "#f5c86a",
+    "stato": "sviluppo",
+    "sottodominio": "fiera",
+    "descrizione": "L'app per i buyer che acquistano dai fornitori nelle fiere estere: prodotti, prezzi e MOQ allo stand, interprete e ordini a casa.",
+    "piattaforme": ["iPhone", "iPad"],
+    "pagina": {
+      "titolo": "La fiera in tasca, <mark>dallo stand all'ordine</mark>.",
+      "lead": "Fotografa stand, business card e prodotti, annota prezzi e quantità minime e parla con il fornitore grazie all'interprete. A casa confronti tutto e prepari richieste d'offerta e ordini.",
+      "scheda": [["Piattaforma", "iPhone e iPad"], ["Stato", "In sviluppo"], ["Valute", "USD, CNY, JPY, EUR"], ["Funziona", "Anche senza rete in fiera"]],
+      "funzioni": [
+        ["Allo stand in pochi secondi", "Foto di stand, padiglione e business card. Ogni scatto viene salvato subito sul dispositivo, anche senza connessione."],
+        ["Prodotti, prezzi e MOQ", "Più foto per articolo, codice, varianti, prezzo nella valuta del fornitore, quantità minima e note."],
+        ["Lettura automatica", "L'intelligenza artificiale legge business card e prodotti e propone i campi, sempre da confermare."],
+        ["Interprete", "Tu parli in italiano, il fornitore in mandarino: audio e testo nelle due direzioni, con modalità automatica e manuale."],
+        ["Totali sempre chiari", "Totale potenziale al MOQ e dei soli articoli scelti, in valuta originale e in euro con cambi BCE e data visibile."],
+        ["Richieste d'offerta e ordini", "A casa confronti fornitori e varianti e prepari RFQ e ordini in PDF, inviati solo dopo la tua conferma."]
+      ],
+      "sezioni": [
+        ["Pensata per chi compra all'estero", "Ogni fornitore resta unico tra fiere diverse, con lo storico delle visite e delle quotazioni."],
+        ["Nessuna sorpresa", "L'app non negozia e non invia ordini da sola, non inventa dati mancanti e non somma valute diverse."]
+      ],
+      "cta": "Vai spesso in fiera per lavoro? Scrivici: cerchiamo buyer per i primi test."
+    }
+  },
+  {
+    "nome": "Segretaria",
+    "sigla": "SE",
+    "colore": "#8aa3b0",
+    "stato": "sviluppo",
+    "sottodominio": "segretaria",
+    "descrizione": "Una nuova app in sviluppo da Technoproject. La scheda completa sarà pubblicata a breve.",
+    "piattaforme": [],
+    "pagina": {
+      "titolo": "Segretaria, <mark>in arrivo</mark>.",
+      "lead": "Stiamo sviluppando Segretaria. A breve pubblicheremo qui la scheda completa con funzioni e modalità di accesso.",
+      "scheda": [["Stato", "In sviluppo"]],
+      "funzioni": [],
+      "sezioni": [],
+      "cta": "Vuoi essere avvisato quando sarà disponibile? Scrivici."
+    }
+  }
+]

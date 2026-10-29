@@ -1,0 +1,64 @@
+# Pubblica il sito su Hostinger a ogni modifica del branch main.
+# Credenziali e chiavi stanno nei "secrets" del repository (Settings › Secrets and variables › Actions),
+# mai nel codice: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD, FTP_DIR (facoltativo, es. public_html/),
+# EMAIL_DESTINATARIO, EMAIL_MITTENTE, ANTHROPIC_API_KEY (facoltativo).
+name: Pubblica su Hostinger
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HAS_FTP: ${{ secrets.FTP_SERVER != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Genera il sito
+        run: python3 build.py --out dist
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: composer
+
+      - name: Installa la libreria Anthropic per il chatbot
+        run: composer install --no-dev --optimize-autoloader --no-interaction -d dist/api
+
+      - name: Crea la configurazione dai secrets
+        env:
+          EMAIL_DESTINATARIO: ${{ secrets.EMAIL_DESTINATARIO }}
+          EMAIL_MITTENTE: ${{ secrets.EMAIL_MITTENTE }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          php -r '
+            $c = require "dist/api/config.example.php";
+            foreach (["email_destinatario" => "EMAIL_DESTINATARIO", "email_mittente" => "EMAIL_MITTENTE", "anthropic_api_key" => "ANTHROPIC_API_KEY"] as $k => $env) {
+              if (getenv($env) !== false && getenv($env) !== "") { $c[$k] = getenv($env); }
+            }
+            file_put_contents("dist/api/config.php", "<?php\nreturn " . var_export($c, true) . ";\n");
+          '
+
+      - name: Credenziali FTP mancanti
+        if: env.HAS_FTP != 'true'
+        run: echo "::warning::Sito generato ma non pubblicato: aggiungi i secrets FTP_SERVER, FTP_USERNAME e FTP_PASSWORD."
+
+      - name: Carica su Hostinger via FTP
+        if: env.HAS_FTP == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: ${{ secrets.FTP_DIR || 'public_html/' }}
+          exclude: |
+            **/.git*
+            **/.git*/**

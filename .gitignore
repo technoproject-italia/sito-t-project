@@ -1,0 +1,4 @@
+dist/
+static/api/vendor/
+static/api/config.php
+__pycache__/
