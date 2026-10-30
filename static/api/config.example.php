@@ -10,6 +10,8 @@ return [
     'oggetto'            => 'Nuova richiesta dal sito __DOMINIO__',
 
     // --- Chatbot (Claude) ---
+    // false: l'endpoint rifiuta le richieste anche con la chiave inserita (vedi CHATBOT_ATTIVO in build.py)
+    'chatbot_attivo'     => false,
     // Chiave da https://console.anthropic.com  (lascia vuoto per usare solo la modalità locale)
     'anthropic_api_key'  => '',
     'modello'            => 'claude-opus-5-5',

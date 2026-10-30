@@ -19,7 +19,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
 $cfg = tp_config();
 tp_controlla_origine($cfg);
 
-if (empty($cfg['anthropic_api_key'])) {
+if (empty($cfg['chatbot_attivo']) || empty($cfg['anthropic_api_key'])) {
     // il widget passa automaticamente alla modalità locale
     tp_json(['errore' => 'AI non configurata.'], 503);
 }
