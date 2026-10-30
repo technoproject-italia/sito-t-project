@@ -43,10 +43,11 @@ jobs:
           EMAIL_DESTINATARIO: ${{ secrets.EMAIL_DESTINATARIO }}
           EMAIL_MITTENTE: ${{ secrets.EMAIL_MITTENTE }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PASSWORD_MAIL: ${{ secrets.PASSWORD_MAIL }}
         run: |
           php -r '
             $c = require "dist/api/config.example.php";
-            foreach (["email_destinatario" => "EMAIL_DESTINATARIO", "email_mittente" => "EMAIL_MITTENTE", "anthropic_api_key" => "ANTHROPIC_API_KEY"] as $k => $env) {
+            foreach (["email_destinatario" => "EMAIL_DESTINATARIO", "email_mittente" => "EMAIL_MITTENTE", "anthropic_api_key" => "ANTHROPIC_API_KEY", "smtp_password" => "PASSWORD_MAIL"] as $k => $env) {
               if (getenv($env) !== false && getenv($env) !== "") { $c[$k] = getenv($env); }
             }
             file_put_contents("dist/api/config.php", "<?php\nreturn " . var_export($c, true) . ";\n");

@@ -8,6 +8,10 @@ return [
     'email_destinatario' => 'info@__DOMINIO__',      // dove arrivano le richieste
     'email_mittente'     => 'info@__DOMINIO__',      // casella esistente su Hostinger (stesso dominio)
     'oggetto'            => 'Nuova richiesta dal sito __DOMINIO__',
+    // Invio autenticato dalla casella email_mittente; senza password si usa mail() del server
+    'smtp_host'          => 'smtp.hostinger.com',
+    'smtp_porta'         => 465,
+    'smtp_password'      => '',
 
     // --- Chatbot (Claude) ---
     // false: l'endpoint rifiuta le richieste anche con la chiave inserita (vedi CHATBOT_ATTIVO in build.py)

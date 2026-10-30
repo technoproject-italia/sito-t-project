@@ -76,6 +76,16 @@ $headers = [
 ];
 
 $oggetto = mb_encode_mimeheader($cfg['oggetto'] . ' — ' . $tipo);
-$inviata = mail($cfg['email_destinatario'], $oggetto, $corpo, $headers, '-f' . $cfg['email_mittente']);
+if (!empty($cfg['smtp_password'])) {
+    try {
+        tp_smtp_invia($cfg, $cfg['email_destinatario'], $oggetto, $corpo, $headers);
+        $inviata = true;
+    } catch (Throwable $e) {
+        error_log('[contatto] SMTP ' . $e->getMessage());
+        $inviata = false;
+    }
+} else {
+    $inviata = mail($cfg['email_destinatario'], $oggetto, $corpo, $headers, '-f' . $cfg['email_mittente']);
+}
 
 $inviata ? esito(true) : esito(false, 'Non siamo riusciti a inviare il messaggio. Riprova o scrivici via email.', 500);

@@ -105,3 +105,47 @@ function tp_rimuovi_cartella(string $dir): void
     }
     rmdir($dir);
 }
+
+/** Invia una email in SMTP autenticato su SSL (porta 465), dalla casella email_mittente. */
+function tp_smtp_invia(array $cfg, string $a, string $oggetto, string $corpo, array $headers): void
+{
+    $sock = @stream_socket_client('ssl://' . $cfg['smtp_host'] . ':' . (int) $cfg['smtp_porta'], $errno, $errstr, 15);
+    if (!$sock) {
+        throw new RuntimeException("connessione non riuscita: {$errstr}");
+    }
+    stream_set_timeout($sock, 15);
+    $comando = static function (?string $riga, int $atteso) use ($sock): void {
+        if ($riga !== null) {
+            fwrite($sock, $riga . "\r\n");
+        }
+        $risposta = '';
+        while (($l = fgets($sock, 1024)) !== false) {
+            $risposta .= $l;
+            if (strlen($l) < 4 || $l[3] === ' ') {
+                break;
+            }
+        }
+        if ((int) substr($risposta, 0, 3) !== $atteso) {
+            throw new RuntimeException('risposta inattesa: ' . trim($risposta));
+        }
+    };
+    $mittente = $cfg['email_mittente'];
+    $comando(null, 220);
+    $comando('EHLO ' . ($_SERVER['SERVER_NAME'] ?? 'localhost'), 250);
+    $comando('AUTH LOGIN', 334);
+    $comando(base64_encode($mittente), 334);
+    $comando(base64_encode($cfg['smtp_password']), 235);
+    $comando("MAIL FROM:<{$mittente}>", 250);
+    $comando("RCPT TO:<{$a}>", 250);
+    $comando('DATA', 354);
+    $intestazioni = ['To' => $a, 'Subject' => $oggetto, 'Date' => date('r'), 'MIME-Version' => '1.0'] + $headers;
+    $messaggio = '';
+    foreach ($intestazioni as $k => $v) {
+        $messaggio .= "{$k}: {$v}\r\n";
+    }
+    // righe che iniziano con un punto vanno raddoppiate (RFC 5321)
+    $messaggio .= "\r\n" . preg_replace('/^\./m', '..', str_replace(["\r\n", "\n"], ["\n", "\r\n"], $corpo));
+    $comando($messaggio . "\r\n.", 250);
+    $comando('QUIT', 221);
+    fclose($sock);
+}
