@@ -1,0 +1,24 @@
+name: Pulizia copie errate (temporaneo)
+on: workflow_dispatch
+jobs:
+  pulisci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Elimina le copie del sito caricate per errore in /public_html
+        env:
+          H: ${{ secrets.FTP_SERVER }}
+          U: ${{ secrets.FTP_USERNAME }}
+          P: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          sudo apt-get install -y -qq lftp >/dev/null
+          cat > cmd.lftp <<'L'
+          set ftp:ssl-force true
+          set ssl:verify-certificate no
+          cd /public_html
+          rm -rf api assets chatbot fiera interrogami segretaria public_html domains
+          rm -f .htaccess .ftp-deploy-sync-state.json *.html sitemap.xml robots.txt
+          cls -a /public_html
+          cls /domains/t-project.io/public_html
+          L
+          out=$(lftp -u "$U,$P" "$H" -f cmd.lftp 2>&1 | tr '\n' ' ')
+          echo "::notice::$out"
