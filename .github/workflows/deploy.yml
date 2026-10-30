@@ -64,7 +64,10 @@ jobs:
           fi
 
       - name: Carica su Hostinger via FTP
+        id: carica
         if: steps.ftp.outputs.ok == 'true'
+        # il server FTP ogni tanto chiude la connessione dati: in quel caso si riprova una volta
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -72,7 +75,24 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
           server-dir: ${{ secrets.FTP_DIR || 'domains/t-project.io/public_html/' }}
-          # FTP con TLS: su Hostinger la connessione dati in chiaro viene chiusa
+          # connessione FTP cifrata (TLS)
+          protocol: ftps
+          security: loose
+          timeout: 120000
+          exclude: |
+            **/.git*
+            **/.git*/**
+
+      - name: Carica su Hostinger via FTP (secondo tentativo)
+        if: steps.carica.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/
+          server-dir: ${{ secrets.FTP_DIR || 'domains/t-project.io/public_html/' }}
+          # connessione FTP cifrata (TLS)
           protocol: ftps
           security: loose
           timeout: 120000
