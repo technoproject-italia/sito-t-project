@@ -20,5 +20,5 @@ jobs:
           cls -a /public_html
           cls /domains/t-project.io/public_html
           L
-          out=$(lftp -u "$U,$P" "$H" -f cmd.lftp 2>&1 | tr '\n' ' ')
+          out=$(lftp -u "$U,$P" -e "source cmd.lftp; bye" "$H" 2>&1 | tr '\n' ' ')
           echo "::notice::$out"
