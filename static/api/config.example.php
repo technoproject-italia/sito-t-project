@@ -6,7 +6,7 @@
 return [
     // --- Modulo di contatto ---
     'email_destinatario' => 'info@__DOMINIO__',      // dove arrivano le richieste
-    'email_mittente'     => 'noreply@__DOMINIO__',   // casella creata su Hostinger (stesso dominio)
+    'email_mittente'     => 'info@__DOMINIO__',      // casella esistente su Hostinger (stesso dominio)
     'oggetto'            => 'Nuova richiesta dal sito __DOMINIO__',
 
     // --- Chatbot (Claude) ---
