@@ -1,0 +1,18 @@
+name: Diagnosi FTP (temporaneo)
+on: workflow_dispatch
+jobs:
+  elenca:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Elenca le cartelle visibili all'utente FTP
+        env:
+          H: ${{ secrets.FTP_SERVER }}
+          U: ${{ secrets.FTP_USERNAME }}
+          P: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          for d in "" "../" "../domains/" "../domains/t-project.io/" "domains/"; do
+            echo "== /$d"
+            curl -sS --ssl-reqd -k --max-time 30 --list-only -u "$U:$P" "ftp://$H/$d" || true
+          done
+          echo "== PWD"
+          curl -sS --ssl-reqd -k --max-time 30 -u "$U:$P" "ftp://$H/" -Q PWD -o /dev/null -v 2>&1 | grep -E '^< 257' || true
