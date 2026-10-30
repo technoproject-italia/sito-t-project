@@ -11,8 +11,9 @@ jobs:
           P: ${{ secrets.FTP_PASSWORD }}
         run: |
           for d in "" "../" "../domains/" "../domains/t-project.io/" "domains/"; do
-            echo "== /$d"
-            curl -sS --ssl-reqd -k --max-time 30 --list-only -u "$U:$P" "ftp://$H/$d" || true
+            out=$(curl -sS --ssl-reqd -k --max-time 30 --list-only -u "$U:$P" "ftp://$H/$d" 2>&1 | tr '\r\n' '  ')
+            echo "::notice::[/$d] $out"
           done
           echo "== PWD"
-          curl -sS --ssl-reqd -k --max-time 30 -u "$U:$P" "ftp://$H/" -Q PWD -o /dev/null -v 2>&1 | grep -E '^< 257' || true
+          pwd=$(curl -sS --ssl-reqd -k --max-time 30 --list-only -u "$U:$P" "ftp://$H/" -v 2>&1 | grep -E '^< 257' | tr -d '\r')
+          echo "::notice::[PWD] $pwd"
