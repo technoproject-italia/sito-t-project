@@ -13,12 +13,15 @@ per il sottodominio omonimo su Hostinger (public_html/<sottodominio>).
 """
 import html
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
 
 QUI = Path(__file__).resolve().parent
 ANTEPRIMA = "--anteprima" in sys.argv
+# Assistente virtuale nascosto finché non sono pronte le risposte; l'anteprima lo mostra comunque
+CHATBOT_ATTIVO = False
 OUT = Path(sys.argv[sys.argv.index("--out") + 1]).resolve() if "--out" in sys.argv else QUI.parent / ("anteprima" if ANTEPRIMA else "sito")
 
 # ---- Dati aziendali: modificali qui ---------------------------------------
@@ -268,8 +271,13 @@ def main() -> None:
     for file, titolo, descr, _ in PAGINE:
         corpo = sostituisci((QUI / "pagine" / file).read_text(encoding="utf-8"))
         corpo = corpo.replace("{{app_tutte}}", tutte_app).replace("{{app_home}}", prime_app)
+        chatbot = CHATBOT_ATTIVO or ANTEPRIMA
+        if not chatbot:
+            # senza widget, via anche i pulsanti e i riquadri che lo aprono
+            corpo = re.sub(r'<button[^>]*data-open-chat[^>]*>.*?</button>', "", corpo)
+            corpo = re.sub(r'<div[^>]*data-solo-chat[^>]*>.*?</div>', "", corpo)
         canonical = f"https://www.{dominio}/" + ("" if file == "index.html" else file)
-        (OUT / file).write_text(documento(titolo, descr, canonical, corpo, file, "", "", True), encoding="utf-8")
+        (OUT / file).write_text(documento(titolo, descr, canonical, corpo, file, "", "", chatbot), encoding="utf-8")
 
     # Pagine delle app nei sottodomini: ogni cartella contiene la sua copia di assets/
     for p in progetti:
