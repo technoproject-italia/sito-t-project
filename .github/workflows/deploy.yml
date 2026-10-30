@@ -74,7 +74,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
-          server-dir: ${{ secrets.FTP_DIR || 'domains/t-project.io/public_html/' }}
+          # percorso assoluto: l'utente FTP entra in /public_html, ma il sito è servito da /domains/t-project.io/public_html
+          server-dir: ${{ secrets.FTP_DIR || '/domains/t-project.io/public_html/' }}
           # connessione FTP cifrata (TLS)
           protocol: ftps
           security: loose
@@ -91,7 +92,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/
-          server-dir: ${{ secrets.FTP_DIR || 'domains/t-project.io/public_html/' }}
+          server-dir: ${{ secrets.FTP_DIR || '/domains/t-project.io/public_html/' }}
           # connessione FTP cifrata (TLS)
           protocol: ftps
           security: loose
