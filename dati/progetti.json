@@ -22,19 +22,8 @@
       "titolo": "Studia meglio, <mark>ripeti</mark> come in classe.",
       "lead": "Fotografa il compito o carica un PDF: Interrogami prepara riassunti e mappe concettuali e poi ti interroga a voce, con una valutazione adatta al tuo livello scolastico.",
       "scheda": [["Piattaforma", "iPhone e iPad"], ["Stato", "In sviluppo"], ["Livelli", "Dalla primaria alle superiori"], ["Pubblicità", "Nessuna"]],
-      "funzioni": [
-        ["Carica il compito", "Foto, PDF o testo incollato: il testo viene trascritto mantenendo il grassetto e i concetti chiave."],
-        ["Riassunti su misura", "Scegli la lunghezza, un terzo o due terzi del testo, con un linguaggio adatto alla tua età."],
-        ["Mappe concettuali", "Le mappe partono dalle parole in grassetto, così ritrovi subito i concetti che contano."],
-        ["Quiz a scelta multipla", "Domande generate sul materiale per verificare cosa hai capito."],
-        ["Interrogazione orale", "Ripeti a voce: ricevi un voto di allenamento in decimi, i punti forti, cosa ripassare e domande di approfondimento."],
-        ["Mi sono bloccato", "Un aiuto progressivo: prima una spinta, poi la parola chiave, senza darti subito la risposta."]
-      ],
-      "sezioni": [
-        ["Pensata per famiglie", "Report settimanale via email ai genitori. Per i ragazzi sotto i 14 anni serve il consenso del genitore, richiesto direttamente dall'app."],
-        ["Privacy della voce", "Il riconoscimento vocale avviene sul telefono: l'audio non lascia il dispositivo e non viene salvato. Al server arriva solo il testo."],
-        ["Piani previsti", "Gratuito con utilizzo settimanale limitato, Premium a 4,99 € al mese o 39,99 € all'anno con 7 giorni di prova, Famiglia a 6,99 € al mese."]
-      ],
+      "funzioni": [["Carica il compito", "Foto, PDF o testo incollato: il testo viene trascritto mantenendo il grassetto e i concetti chiave."], ["Riassunti su misura", "Scegli la lunghezza, un terzo o due terzi del testo, con un linguaggio adatto alla tua età."], ["Mappe concettuali", "Le mappe partono dalle parole in grassetto, così ritrovi subito i concetti che contano."], ["Quiz a scelta multipla", "Domande generate sul materiale per verificare cosa hai capito."], ["Interrogazione orale", "Ripeti a voce: ricevi un voto di allenamento in decimi, i punti forti, cosa ripassare e domande di approfondimento."], ["Mi sono bloccato", "Un aiuto progressivo: prima una spinta, poi la parola chiave, senza darti subito la risposta."]],
+      "sezioni": [["Pensata per famiglie", "Report settimanale via email ai genitori. Per i ragazzi sotto i 14 anni serve il consenso del genitore, richiesto direttamente dall'app."], ["Privacy della voce", "Il riconoscimento vocale avviene sul telefono: l'audio non lascia il dispositivo e non viene salvato. Al server arriva solo il testo."], ["Piani previsti", "Gratuito con utilizzo settimanale limitato, Premium a 4,99 € al mese o 39,99 € all'anno con 7 giorni di prova, Famiglia a 6,99 € al mese."]],
       "cta": "Vuoi provarla in anteprima? Scrivici e ti avvisiamo appena è disponibile su App Store."
     }
   },
@@ -50,36 +39,26 @@
       "titolo": "La fiera in tasca, <mark>dallo stand all'ordine</mark>.",
       "lead": "Fotografa stand, business card e prodotti, annota prezzi e quantità minime e parla con il fornitore grazie all'interprete. A casa confronti tutto e prepari richieste d'offerta e ordini.",
       "scheda": [["Piattaforma", "iPhone e iPad"], ["Stato", "In sviluppo"], ["Valute", "USD, CNY, JPY, EUR"], ["Funziona", "Anche senza rete in fiera"]],
-      "funzioni": [
-        ["Allo stand in pochi secondi", "Foto di stand, padiglione e business card. Ogni scatto viene salvato subito sul dispositivo, anche senza connessione."],
-        ["Prodotti, prezzi e MOQ", "Più foto per articolo, codice, varianti, prezzo nella valuta del fornitore, quantità minima e note."],
-        ["Lettura automatica", "L'intelligenza artificiale legge business card e prodotti e propone i campi, sempre da confermare."],
-        ["Interprete", "Tu parli in italiano, il fornitore in mandarino: audio e testo nelle due direzioni, con modalità automatica e manuale."],
-        ["Totali sempre chiari", "Totale potenziale al MOQ e dei soli articoli scelti, in valuta originale e in euro con cambi BCE e data visibile."],
-        ["Richieste d'offerta e ordini", "A casa confronti fornitori e varianti e prepari RFQ e ordini in PDF, inviati solo dopo la tua conferma."]
-      ],
-      "sezioni": [
-        ["Pensata per chi compra all'estero", "Ogni fornitore resta unico tra fiere diverse, con lo storico delle visite e delle quotazioni."],
-        ["Nessuna sorpresa", "L'app non negozia e non invia ordini da sola, non inventa dati mancanti e non somma valute diverse."]
-      ],
+      "funzioni": [["Allo stand in pochi secondi", "Foto di stand, padiglione e business card. Ogni scatto viene salvato subito sul dispositivo, anche senza connessione."], ["Prodotti, prezzi e MOQ", "Più foto per articolo, codice, varianti, prezzo nella valuta del fornitore, quantità minima e note."], ["Lettura automatica", "L'intelligenza artificiale legge business card e prodotti e propone i campi, sempre da confermare."], ["Interprete", "Tu parli in italiano, il fornitore in mandarino: audio e testo nelle due direzioni, con modalità automatica e manuale."], ["Totali sempre chiari", "Totale potenziale al MOQ e dei soli articoli scelti, in valuta originale e in euro con cambi BCE e data visibile."], ["Richieste d'offerta e ordini", "A casa confronti fornitori e varianti e prepari RFQ e ordini in PDF, inviati solo dopo la tua conferma."]],
+      "sezioni": [["Pensata per chi compra all'estero", "Ogni fornitore resta unico tra fiere diverse, con lo storico delle visite e delle quotazioni."], ["Nessuna sorpresa", "L'app non negozia e non invia ordini da sola, non inventa dati mancanti e non somma valute diverse."]],
       "cta": "Vai spesso in fiera per lavoro? Scrivici: cerchiamo buyer per i primi test."
     }
   },
   {
-    "nome": "Segretaria",
-    "sigla": "SE",
-    "colore": "#8aa3b0",
+    "nome": "Segretario AI",
+    "sigla": "SA",
+    "colore": "#3fd0c9",
     "stato": "sviluppo",
     "sottodominio": "segretaria",
-    "descrizione": "Una nuova app in sviluppo da Technoproject. La scheda completa sarà pubblicata a breve.",
-    "piattaforme": [],
+    "descrizione": "L'assistente personale per iPhone: le parli e Sara organizza attività, liste, agenda e documenti e, se glielo chiedi, telefona al posto tuo.",
+    "piattaforme": ["iPhone"],
     "pagina": {
-      "titolo": "Segretaria, <mark>in arrivo</mark>.",
-      "lead": "Stiamo sviluppando Segretaria. A breve pubblicheremo qui la scheda completa con funzioni e modalità di accesso.",
-      "scheda": [["Stato", "In sviluppo"]],
-      "funzioni": [],
-      "sezioni": [],
-      "cta": "Vuoi essere avvisato quando sarà disponibile? Scrivici."
+      "titolo": "La tua segretaria, <mark>sempre in tasca</mark>.",
+      "lead": "Ti presentiamo Sara: le parli come a una persona, a voce o per iscritto, e lei segna le cose da fare, aggiorna le liste, fissa gli appuntamenti, ti ricorda quello che conta e tiene in ordine i tuoi documenti. Quando glielo chiedi, telefona anche per te. Non fa mai nulla di importante senza la tua conferma.",
+      "scheda": [["Piattaforma", "iPhone"], ["Stato", "In sviluppo (beta)"], ["Lingua", "Italiano, in chat e a voce"], ["Per chi", "Professionisti, famiglie, chiunque"]],
+      "funzioni": [["Sara in chat", "Scrivi come a una persona: \"Domani alle 15 dentista\" diventa un appuntamento, \"Devo chiamare l'idraulico, è urgente\" un'attività ad alta priorità. Se una richiesta è ambigua, ti fa una domanda."], ["Conversazione vocale", "Parli con Sara come in una telefonata: quattro voci a scelta, puoi interromperla quando vuoi, c'è una modalità per ambienti rumorosi e i numeri li detta una cifra alla volta."], ["Liste intelligenti", "Supermercato e Brico già pronte, più tutte le liste che vuoi. Sara smista gli articoli nella lista giusta, impara le tue abitudini e ti avvisa dei doppioni."], ["Agenda e Calendario iPhone", "Crea e sposta appuntamenti anche con date come \"giovedì prossimo alle 10\". Vede il Calendario dell'iPhone e ogni modifica ti viene chiesta in conferma."], ["Promemoria e sveglie", "Notifiche singole o ogni giorno, anche ad app chiusa, e sveglie vere sull'iPhone (con iOS 26): \"Svegliami domani alle 6:30\"."], ["Memoria e documenti", "Ricordi su persone, luoghi e abitudini, salvati solo dopo la tua conferma. Carichi i documenti e Sara risponde alle domande sul contenuto; quelli eliminati si recuperano dal Cestino."], ["Pieno potenziale", "Se lo attivi, Sara cerca sul web meteo, notizie, orari e indirizzi e ti mostra le fonti. I tuoi dati personali non vengono mai inviati al motore di ricerca."], ["Chiamate AI", "Sara telefona per te, per esempio a un ristorante o a uno studio medico. Parte solo dopo il tuo \"Confermo la chiamata\", si presenta come assistente virtuale e ti lascia la trascrizione completa."], ["Segretario Studio", "Raggruppi i PDF per progetto, anche scansionati: Sara li riassume, risponde alle domande citando documento e pagina e prepara una bozza dei moduli con i dati di famiglia che hai confermato."]],
+      "sezioni": [["Tu resti al comando", "Telefonate, appuntamenti proposti al telefono, modifiche al calendario e nuovi ricordi richiedono sempre la tua conferma. Sara non accetta appuntamenti da sola: ti invia la proposta e scegli tu."], ["Cosa Sara non fa", "Non effettua pagamenti, non invia messaggi WhatsApp, non firma moduli e non dà consensi al posto tuo, e non inventa l'esito di una telefonata."], ["Privacy e sicurezza", "Account protetto, trascrizioni delle chiamate e credenziali conservate cifrate, documenti in uno spazio privato aperto solo con link temporanei. Le istruzioni nascoste in documenti o pagine web non hanno effetto su Sara."], ["Prossimamente", "Collegamento alla posta Gmail e Outlook con invio solo dopo la tua conferma, appuntamenti di durata personalizzata e telefonate più lunghe (nella beta il limite è di 2 minuti)."]],
+      "cta": "Vuoi provarla in anteprima? Scrivici e ti avvisiamo appena è disponibile su App Store."
     }
   }
 ]
