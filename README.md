@@ -5,6 +5,8 @@
 - Dati aziendali (email, dominio, telefono, PEC): in cima a `build.py`.
 - Testi delle pagine: `pagine/*.html`. App e loro pagine nei sottodomini: `dati/progetti.json`
   (ogni app con `sottodominio` genera la cartella omonima, da collegare al sottodominio su Hostinger).
+- Pannelli web delle app, già compilati: `app-web/<sottodominio>/...` viene copiato nella cartella del sottodominio
+  (es. `app-web/fiera/pannello` → https://fiera.t-project.io/pannello/, generato da `apps/web` nel repository `fiera`).
 - Base di conoscenza del chatbot: `chatbot/conoscenza.json`.
 - Stile: token in cima a `static/assets/css/style.css`.
 - Pubblicazione automatica: `.github/workflows/deploy.yml` genera il sito e lo carica via FTP a ogni push su `main`.

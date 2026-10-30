@@ -33,6 +33,7 @@
     "colore": "#f5c86a",
     "stato": "sviluppo",
     "sottodominio": "fiera",
+    "accesso": "https://fiera.t-project.io/pannello/",
     "descrizione": "L'app per i buyer che acquistano dai fornitori nelle fiere estere: prodotti, prezzi e MOQ allo stand, interprete e ordini a casa.",
     "piattaforme": ["iPhone", "iPad"],
     "pagina": {
