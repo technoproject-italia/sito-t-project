@@ -10,7 +10,7 @@ jobs:
           U: ${{ secrets.FTP_USERNAME }}
           P: ${{ secrets.FTP_PASSWORD }}
         run: |
-          for d in "" "../" "../domains/" "../domains/t-project.io/" "domains/"; do
+          for d in "%2F" "%2Fdomains/t-project.io/public_html/" "%2Fdomains/t-project.io/public_html/fiera/"; do
             out=$(curl -sS --ssl-reqd -k --max-time 30 --list-only -u "$U:$P" "ftp://$H/$d" 2>&1 | tr '\r\n' '  ')
             echo "::notice::[/$d] $out"
           done
