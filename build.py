@@ -10,6 +10,7 @@ Header, footer e dati aziendali sono definiti una volta sola qui sotto.
 Le pagine stanno in pagine/*.html, le app in dati/progetti.json: per ogni app con
 "sottodominio" viene generata la cartella <sottodominio>/ con la sua pagina, pronta
 per il sottodominio omonimo su Hostinger (public_html/<sottodominio>).
+I pannelli web già compilati delle app stanno in app-web/<sottodominio>/ e vengono copiati lì.
 """
 import html
 import json
@@ -293,6 +294,13 @@ def main() -> None:
         canonical = f"https://{p['sottodominio']}.{dominio}/"
         (cartella / "index.html").write_text(
             documento(titolo, p["descrizione"], canonical, corpo_app(p, base), "", base, assets, False), encoding="utf-8")
+
+    # Pannelli web delle app (già compilati nei loro repository): app-web/<sottodominio>/... finisce
+    # nella cartella del sottodominio, es. app-web/fiera/pannello -> fiera.t-project.io/pannello/
+    pannelli = QUI / "app-web"
+    if pannelli.is_dir():
+        for sotto in sorted(d for d in pannelli.iterdir() if d.is_dir()):
+            shutil.copytree(sotto, OUT / sotto.name, dirs_exist_ok=True)
 
     # robots.txt e sitemap.xml
     url = [f"https://www.{dominio}/" + ("" if f == "index.html" else f) for f, *_ in PAGINE if f not in ("404.html", "modello-app.html")]
